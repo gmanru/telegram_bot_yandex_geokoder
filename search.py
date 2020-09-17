@@ -34,7 +34,7 @@ def get_coord(addres):
 def get_adres(coord:str):
     #print('entered')
     a = requests.get(
-        'https://geocode-maps.yandex.ru/1.x/?format=json&apikey={}&geocode={}'.format('42e25768-2695-41ce-bc97-a25cf4bf21fd', coord))
+        'https://geocode-maps.yandex.ru/1.x/?format=json&apikey={}&geocode={}'.format(geokoder_api_key, coord))
     d = dict(a.json())
     #print(d)
     try:
