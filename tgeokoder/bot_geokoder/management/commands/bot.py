@@ -51,9 +51,10 @@ def to_search(update, context):
     text = update.message.text
     print(text)
     output = get_coord(text)
-    print(output)
+    #print(output)
     p, _ = Profile.objects.get_or_create(
     user_id=chat_id,)
+    update.message.reply_text(output)
     #defaults={
     #    'request': update.message.from_user.username,})
     return ConversationHandler.END 

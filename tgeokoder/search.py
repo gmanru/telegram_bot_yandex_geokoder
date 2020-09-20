@@ -1,9 +1,17 @@
 import requests
 with open('secret.txt') as f:
     geokoder_api_key = f.read().strip()
+from bot_geokoder.models import Filter
 
+query = Filter.objects.values('text')
+filters = []
+for filter in query:
+    for value in filter:
+        filters.append(filter[value])
+#for value in range(len(filters)):
+   # filters.append(filters[value])
 
-filters = ['Елец','Москва','Россия']
+#print(type(query),'\n',filters)
 list_of_adresses =[]
 
 def get_coord(addres):
@@ -24,8 +32,8 @@ def get_coord(addres):
         for filter in range(len(filters)):
             if filters[filter] in list_of_adresses[adres]:
                 #print(list_of_adresses[adres])
-                pass
-    return list_of_adresses
+                
+                return list_of_adresses[adres]
 
 
 
