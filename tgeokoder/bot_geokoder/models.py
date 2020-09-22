@@ -5,6 +5,7 @@ class Profile(models.Model):
     user_id = models.PositiveIntegerField(
         verbose_name='ID Пользователя',
         unique=True,
+        primary_key=True
     )
 
     result = models.ManyToManyField(
@@ -13,7 +14,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return f'#{self.user_id} {self.result}'
+        return f'{self.user_id}'
 
     '''def __str__(self):
         return f'#{self.external_id} {self.name}'''
@@ -71,6 +72,5 @@ class Result(models.Model):
         verbose_name_plural = 'Результаты поиска'
 
     def __str__(self):
-        return self.request
+        return  f'{self.request} -> {self.result} ({self.created_at})'
 
-    
